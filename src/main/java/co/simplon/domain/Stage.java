@@ -1,5 +1,5 @@
 package co.simplon.domain;
 
-public class technique {
+public class Stage {
 
 }
