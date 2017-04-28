@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 public class Adresse {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long idadresse;
+	private Long id;
 	private String adresse;
 	private String codePostal;
 	private String ville;

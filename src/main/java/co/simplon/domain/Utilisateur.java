@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long idutilisateur;
+	private Long id;
 	private String username;
 	private String password;
 	private String nom;
@@ -26,14 +26,14 @@ public class Utilisateur {
 	private String avatarUtilisateur;
 	private Boolean actif;
 	@ManyToOne
-	@JoinColumn(name="idrole")
+	@JoinColumn(name="role_id")
 	private Role role;
 	@ManyToOne
-	@JoinColumn(name="iadresse")
+	@JoinColumn(name="adresse_id")
 	private Adresse adresse;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="reseau_social_utilisateur", joinColumns = {
-			@JoinColumn(name = "utilisateur_idUtilisateur")},inverseJoinColumns = {@JoinColumn(name ="reseauSocial_idreseauSocial")
+			@JoinColumn(name = "utilisateur_id")},inverseJoinColumns = {@JoinColumn(name ="reseauSocial_id")
 			})
 	private List<Reseau_social> reseau_socials;
 	

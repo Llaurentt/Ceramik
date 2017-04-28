@@ -13,15 +13,15 @@ import javax.persistence.ManyToOne;
 public class Inscription {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long idinscription;
+	private Long id;
 	private Date dateInscription;
 	private Date dateArrivee;
 	private Date dateDepart;
 	@ManyToOne
-	@JoinColumn(name="idUtilisateur")
+	@JoinColumn(name="utilisateur_id")
 	private Utilisateur utilisateur;
 	@ManyToOne
-	@JoinColumn(name="idEvenement")
+	@JoinColumn(name="evenement_id")
 	private Evenement evenement;
 	public Date getDateInscription() {
 		return dateInscription;

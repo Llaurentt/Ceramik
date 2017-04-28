@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 public class Role {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long idrole;
+	private Long id;
 	private String nom;
 	@OneToMany(mappedBy="role", fetch = FetchType.LAZY)
 	private List<Utilisateur> utilisateurs;
