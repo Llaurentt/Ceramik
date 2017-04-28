@@ -1,12 +1,16 @@
 package co.simplon.domain;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Utilisateur {
@@ -21,10 +25,71 @@ public class Utilisateur {
 	private String telephone;
 	private String avatarUtilisateur;
 	private Boolean actif;
+	@ManyToOne
+	@JoinColumn(name="idrole")
 	private Role role;
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
+	@ManyToOne
+	@JoinColumn(name="iadresse")
 	private Adresse adresse;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name="reseau_social_utilisateur", joinColumns = {
+			@JoinColumn(name = "utilisateur_idUtilisateur")},inverseJoinColumns = {@JoinColumn(name ="reseauSocial_idreseauSocial")
+			})
+	private List<Reseau_social> reseau_socials;
 	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	public String getAvatarUtilisateur() {
+		return avatarUtilisateur;
+	}
+	public void setAvatarUtilisateur(String avatarUtilisateur) {
+		this.avatarUtilisateur = avatarUtilisateur;
+	}
+	public Boolean getActif() {
+		return actif;
+	}
+	public void setActif(Boolean actif) {
+		this.actif = actif;
+	}
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
 
 }
