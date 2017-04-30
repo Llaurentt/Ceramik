@@ -1,4 +1,4 @@
-package co.simplon.domain;
+package co.simplon.modele;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Utilisateur {
@@ -32,10 +34,21 @@ public class Utilisateur {
 	@JoinColumn(name="adresse_id")
 	private Adresse adresse;
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name="reseau_social_utilisateur", joinColumns = {
-			@JoinColumn(name = "utilisateur_id")},inverseJoinColumns = {@JoinColumn(name ="reseauSocial_id")
-			})
+//	@JoinTable(name="reseau_social_utilisateur", joinColumns = {
+//			@JoinColumn(name = "utilisateur_id")},inverseJoinColumns = {@JoinColumn(name ="reseauSocial_id")
+//			})
+	@JoinTable(name="reseau_social_utilisateur")
 	private List<Reseau_social> reseau_socials;
+	@OneToOne(mappedBy = "utilisateur")
+	private Ceramiste ceramiste;
+	@OneToMany(mappedBy="utilisateur", fetch = FetchType.LAZY)
+	private List<Inscription> inscriptions;
+	@ManyToMany(fetch = FetchType.LAZY)
+//	@JoinTable(name="favori_photo", joinColumns = {
+//			@JoinColumn(name = "utilisateur_id")},inverseJoinColumns = {@JoinColumn(name ="photo_id")
+//			})
+	@JoinTable(name="favori_photo")
+	private List<Photo> photos;
 	
 	public String getUsername() {
 		return username;

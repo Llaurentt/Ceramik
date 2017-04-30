@@ -1,4 +1,4 @@
-package co.simplon.domain;
+package co.simplon.modele;
 
 import java.util.Date;
 
@@ -23,6 +23,7 @@ public class Inscription {
 	@ManyToOne
 	@JoinColumn(name="evenement_id")
 	private Evenement evenement;
+	
 	public Date getDateInscription() {
 		return dateInscription;
 	}
