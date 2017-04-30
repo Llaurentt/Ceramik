@@ -14,9 +14,9 @@ public class Inscription {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private Date dateInscription;
-	private Date dateArrivee;
-	private Date dateDepart;
+	private Date date_inscription;
+	private Date date_arrivee;
+	private Date date_depart;
 	@ManyToOne
 	@JoinColumn(name="utilisateur_id")
 	private Utilisateur utilisateur;
@@ -24,23 +24,23 @@ public class Inscription {
 	@JoinColumn(name="evenement_id")
 	private Evenement evenement;
 	
-	public Date getDateInscription() {
-		return dateInscription;
+	public Date getDate_inscription() {
+		return date_inscription;
 	}
-	public void setDateInscription(Date dateInscription) {
-		this.dateInscription = dateInscription;
+	public void setDate_inscription(Date date_inscription) {
+		this.date_inscription = date_inscription;
 	}
-	public Date getDateArrivee() {
-		return dateArrivee;
+	public Date getDate_arrivee() {
+		return date_arrivee;
 	}
-	public void setDateArrivee(Date dateArrivee) {
-		this.dateArrivee = dateArrivee;
+	public void setDate_arrivee(Date date_arrivee) {
+		this.date_arrivee = date_arrivee;
 	}
-	public Date getDateDepart() {
-		return dateDepart;
+	public Date getDate_depart() {
+		return date_depart;
 	}
-	public void setDateDepart(Date dateDepart) {
-		this.dateDepart = dateDepart;
+	public void setDate_depart(Date date_depart) {
+		this.date_depart = date_depart;
 	}
 	
 }

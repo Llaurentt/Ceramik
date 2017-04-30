@@ -29,7 +29,7 @@ public class Utilisateur {
 	private String prenom;
 	private String email;
 	private String telephone;
-	private String avatarUtilisateur;
+	private String avatar_utilisateur;
 	private Boolean actif;
 	@ManyToOne
 	@JoinColumn(name="role_id")
@@ -90,11 +90,11 @@ public class Utilisateur {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	public String getAvatarUtilisateur() {
-		return avatarUtilisateur;
+	public String getAvatar_utilisateur() {
+		return avatar_utilisateur;
 	}
-	public void setAvatarUtilisateur(String avatarUtilisateur) {
-		this.avatarUtilisateur = avatarUtilisateur;
+	public void setAvatar_utilisateur(String avatar_utilisateur) {
+		this.avatar_utilisateur = avatar_utilisateur;
 	}
 	public Boolean getActif() {
 		return actif;

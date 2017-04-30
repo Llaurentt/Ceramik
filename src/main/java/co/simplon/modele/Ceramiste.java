@@ -22,7 +22,7 @@ public class Ceramiste {
 	private String bio;
 	private String exposition;
 	private String concours;
-	private String sitePerso;
+	private String site_perso;
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private Utilisateur utilisateur;
@@ -55,11 +55,11 @@ public class Ceramiste {
 	public void setConcours(String concours) {
 		this.concours = concours;
 	}
-	public String getSitePerso() {
-		return sitePerso;
+	public String getSite_perso() {
+		return site_perso;
 	}
-	public void setSitePerso(String sitePerso) {
-		this.sitePerso = sitePerso;
+	public void setSite_perso(String site_perso) {
+		this.site_perso = site_perso;
 	}
 	
 	

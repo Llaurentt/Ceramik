@@ -17,9 +17,9 @@ public class Stage {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private Integer nombreMin;
-	private Integer nombreMax;
-	private Date dateLimiteInscription;
+	private Integer nombre_min;
+	private Integer nombre_max;
+	private Date date_limite_inscription;
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private Evenement evenement;
@@ -28,23 +28,23 @@ public class Stage {
 	private Ceramiste ceramiste;
 	
 	
-	public Integer getNombreMin() {
-		return nombreMin;
+	public Integer getNombre_min() {
+		return nombre_min;
 	}
-	public void setNombreMin(Integer nombreMin) {
-		this.nombreMin = nombreMin;
+	public void setNombre_min(Integer nombre_min) {
+		this.nombre_min = nombre_min;
 	}
-	public Integer getNombreMax() {
-		return nombreMax;
+	public Integer getNombre_max() {
+		return nombre_max;
 	}
-	public void setNombreMax(Integer nombreMax) {
-		this.nombreMax = nombreMax;
+	public void setNombre_max(Integer nombre_max) {
+		this.nombre_max = nombre_max;
 	}
-	public Date getDateLimiteInscription() {
-		return dateLimiteInscription;
+	public Date getDate_limite_inscription() {
+		return date_limite_inscription;
 	}
-	public void setDateLimiteInscription(Date dateLimiteInscription) {
-		this.dateLimiteInscription = dateLimiteInscription;
+	public void setDate_limite_inscription(Date date_limite_inscription) {
+		this.date_limite_inscription = date_limite_inscription;
 	}
 	
 	

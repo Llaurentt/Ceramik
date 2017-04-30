@@ -9,13 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Adresse {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String adresse;
-	private String codePostal;
+	// Attention au camelCase codePostal est transformé en code_postal
+	private String code_postal;
 	private String ville;
 	private String pays;
 	@OneToMany(mappedBy="adresse", fetch = FetchType.LAZY)
@@ -27,11 +29,11 @@ public class Adresse {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	public String getCodePostal() {
-		return codePostal;
+	public String getCode_postal() {
+		return code_postal;
 	}
-	public void setCodePostal(String codePostal) {
-		this.codePostal = codePostal;
+	public void setCode_postal(String code_postal) {
+		this.code_postal = code_postal;
 	}
 	public String getVille() {
 		return ville;

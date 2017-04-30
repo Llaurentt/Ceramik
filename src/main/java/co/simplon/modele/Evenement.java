@@ -17,8 +17,8 @@ public class Evenement {
 	private Long id;
 	private String titre;
 	private String descriptif;
-	private Date dateDebut;
-	private Date dateFin;
+	private Date date_debut;
+	private Date date_fin;
 	@ManyToOne
 	@JoinColumn(name="adresse_id")
 	private Adresse adresse;
@@ -40,17 +40,17 @@ public class Evenement {
 	public void setDescriptif(String descriptif) {
 		this.descriptif = descriptif;
 	}
-	public Date getDateDebut() {
-		return dateDebut;
+	public Date getDate_debut() {
+		return date_debut;
 	}
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
+	public void setDate_debut(Date date_debut) {
+		this.date_debut = date_debut;
 	}
-	public Date getDateFin() {
-		return dateFin;
+	public Date getDate_fin() {
+		return date_fin;
 	}
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
+	public void setDate_fin(Date date_fin) {
+		this.date_fin = date_fin;
 	}
 	
 	

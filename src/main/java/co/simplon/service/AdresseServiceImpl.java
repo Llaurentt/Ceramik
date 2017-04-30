@@ -14,13 +14,11 @@ public class AdresseServiceImpl implements AdresseService {
 	private AdresseDao adresseDao;
 	@Override
 	public Adresse saveAdresse(Adresse adresse) {
-		// TODO Auto-generated method stub
 		return adresseDao.save(adresse);
 	}
 
 	@Override
 	public List<Adresse> listAdresse() {
-		// TODO Auto-generated method stub
 		return adresseDao.findAll();
 	}
 
