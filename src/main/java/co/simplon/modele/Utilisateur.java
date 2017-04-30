@@ -14,12 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	@NotEmpty(message="Le champ nom de l'utilisateur doit être renseigné")
 	private String username;
+	@NotEmpty(message="Le champ mot de passe doit être renseigné")
 	private String password;
 	private String nom;
 	private String prenom;
