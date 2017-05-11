@@ -1,4 +1,4 @@
-package co.simplon.modele;
+package co.simplon.domain;
 
 import java.util.List;
 
@@ -46,6 +46,12 @@ public class Adresse {
 	}
 	public void setPays(String pays) {
 		this.pays = pays;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }

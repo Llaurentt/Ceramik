@@ -1,4 +1,4 @@
-package co.simplon.modele;
+package co.simplon.domain;
 
 import java.util.List;
 

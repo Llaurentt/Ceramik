@@ -1,4 +1,4 @@
-package co.simplon.modele;
+package co.simplon.domain;
 
 import java.util.Date;
 
@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Evenement {
 	@Id
@@ -17,7 +19,9 @@ public class Evenement {
 	private Long id;
 	private String titre;
 	private String descriptif;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date_debut;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date_fin;
 	@ManyToOne
 	@JoinColumn(name="adresse_id")
@@ -52,6 +56,5 @@ public class Evenement {
 	public void setDate_fin(Date date_fin) {
 		this.date_fin = date_fin;
 	}
-	
-	
+
 }

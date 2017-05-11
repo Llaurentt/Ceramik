@@ -1,4 +1,4 @@
-package co.simplon.modele;
+package co.simplon.domain;
 
 import java.util.Date;
 
@@ -19,6 +19,7 @@ public class Stage {
 	private Long id;
 	private Integer nombre_min;
 	private Integer nombre_max;
+	private Integer nbr_stagiaire;
 	private Date date_limite_inscription;
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
@@ -39,6 +40,30 @@ public class Stage {
 	}
 	public void setNombre_max(Integer nombre_max) {
 		this.nombre_max = nombre_max;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Integer getNbr_stagiaire() {
+		return nbr_stagiaire;
+	}
+	public void setNbr_stagiaire(Integer nbr_stagiaire) {
+		this.nbr_stagiaire = nbr_stagiaire;
+	}
+	public Evenement getEvenement() {
+		return evenement;
+	}
+	public void setEvenement(Evenement evenement) {
+		this.evenement = evenement;
+	}
+	public Ceramiste getCeramiste() {
+		return ceramiste;
+	}
+	public void setCeramiste(Ceramiste ceramiste) {
+		this.ceramiste = ceramiste;
 	}
 	public Date getDate_limite_inscription() {
 		return date_limite_inscription;

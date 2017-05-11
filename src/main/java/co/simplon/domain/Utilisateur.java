@@ -1,4 +1,4 @@
-package co.simplon.modele;
+package co.simplon.domain;
 
 import java.util.List;
 
@@ -108,5 +108,42 @@ public class Utilisateur {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public List<Reseau_social> getReseau_socials() {
+		return reseau_socials;
+	}
+	public void setReseau_socials(List<Reseau_social> reseau_socials) {
+		this.reseau_socials = reseau_socials;
+	}
+	public Ceramiste getCeramiste() {
+		return ceramiste;
+	}
+	public void setCeramiste(Ceramiste ceramiste) {
+		this.ceramiste = ceramiste;
+	}
+	public List<Inscription> getInscriptions() {
+		return inscriptions;
+	}
+	public void setInscriptions(List<Inscription> inscriptions) {
+		this.inscriptions = inscriptions;
+	}
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
+	
+	
 }
