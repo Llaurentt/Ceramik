@@ -57,21 +57,21 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		 	
 		 	Adresse adresse = new Adresse();
 //		 	Adresse adresse = adresseDao.findOne(u.getAdresse().getId());
-		 		if (u.getAdresse().getId().equals(null)){
-					adresse.setId(null);
-					adresse.setAdresse("");
-					adresse.setCode_postal("");
-					adresse.setVille("");
-					adresse.setPays("");
-					utilisateur.setAdresse(adresse);
-		 		} else {
+//		 		if (u.getAdresse().getId() == null){
+//					adresse.setId(null);
+//					adresse.setAdresse("");
+//					adresse.setCode_postal("");
+//					adresse.setVille("");
+//					adresse.setPays("");
+//					utilisateur.setAdresse(adresse);
+//		 		} else {
 		 			adresse.setId(u.getAdresse().getId());
 					adresse.setAdresse(u.getAdresse().getAdresse());
 					adresse.setCode_postal(u.getAdresse().getCode_postal());
 					adresse.setVille(u.getAdresse().getVille());
 					adresse.setPays(u.getAdresse().getPays());
 					utilisateur.setAdresse(adresse);
-		 		}
+//		 		}
 				
 				result.add(utilisateur);
 		}
