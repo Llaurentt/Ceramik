@@ -37,12 +37,6 @@ public class Utilisateur {
 	@ManyToOne
 	@JoinColumn(name="adresse_id")
 	private Adresse adresse;
-	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(name="reseau_social_utilisateur", joinColumns = {
-//			@JoinColumn(name = "utilisateur_id")},inverseJoinColumns = {@JoinColumn(name ="reseauSocial_id")
-//			})
-	@JoinTable(name="reseau_social_utilisateur")
-	private List<Reseau_social> reseau_socials;
 	@OneToOne(mappedBy = "utilisateur")
 	private Ceramiste ceramiste;
 	@OneToMany(mappedBy="utilisateur", fetch = FetchType.LAZY)
@@ -119,12 +113,6 @@ public class Utilisateur {
 	}
 	public void setRole(Role role) {
 		this.role = role;
-	}
-	public List<Reseau_social> getReseau_socials() {
-		return reseau_socials;
-	}
-	public void setReseau_socials(List<Reseau_social> reseau_socials) {
-		this.reseau_socials = reseau_socials;
 	}
 	public Ceramiste getCeramiste() {
 		return ceramiste;
