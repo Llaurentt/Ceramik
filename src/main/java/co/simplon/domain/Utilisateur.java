@@ -16,7 +16,16 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
+@JsonInclude(Include.NON_NULL)	
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "id")
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,20 +41,17 @@ public class Utilisateur {
 	private String avatar_utilisateur;
 	private Boolean actif;
 	@ManyToOne
-	@JoinColumn(name="role_id")
 	private Role role;
 	@ManyToOne
-	@JoinColumn(name="adresse_id")
 	private Adresse adresse;
 	@OneToOne(mappedBy = "utilisateur")
 	private Ceramiste ceramiste;
 	@OneToMany(mappedBy="utilisateur", fetch = FetchType.LAZY)
 	private List<Inscription> inscriptions;
 	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(name="favori_photo", joinColumns = {
-//			@JoinColumn(name = "utilisateur_id")},inverseJoinColumns = {@JoinColumn(name ="photo_id")
-//			})
-	@JoinTable(name="favori_photo")
+	@JoinTable(name="favori_photo", joinColumns = {
+			@JoinColumn(name = "utilisateur_id")},inverseJoinColumns = {@JoinColumn(name ="photo_id")
+			})
 	private List<Photo> photos;
 	
 	public String getUsername() {
