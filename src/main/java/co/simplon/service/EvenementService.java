@@ -7,8 +7,9 @@ import co.simplon.domain.Evenement;
 public interface EvenementService {
 	public Evenement saveEvenement(Evenement evenement);
 	public List<Evenement> listEvenement();
+	public List<Evenement> findByTypeEvenementId(Long typeEvenementId);
 	public Evenement updateEvenement(Evenement evenement);
 	public void deleteEvenement(Long id);
-	public Evenement unEvenement(String titre);
+	public Evenement getEvenement(String titre);
 
 }

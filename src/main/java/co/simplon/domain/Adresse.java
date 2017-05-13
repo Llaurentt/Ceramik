@@ -14,8 +14,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-
-
 @Entity
 @JsonInclude(Include.NON_NULL)
 @JsonIdentityInfo(
@@ -26,7 +24,6 @@ public class Adresse {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String adresse;
-	// Attention au camelCase codePostal est transformé en code_postal
 	private String code_postal;
 	private String ville;
 	private String pays;

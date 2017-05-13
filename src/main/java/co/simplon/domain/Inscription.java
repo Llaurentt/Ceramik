@@ -6,13 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @JsonInclude(Include.NON_NULL)
@@ -27,10 +26,8 @@ public class Inscription {
 	private Date date_arrivee;
 	private Date date_depart;
 	@ManyToOne
-	@JoinColumn(name="utilisateur_id")
 	private Utilisateur utilisateur;
 	@ManyToOne
-	@JoinColumn(name="evenement_id")
 	private Evenement evenement;
 	
 	public Date getDate_inscription() {

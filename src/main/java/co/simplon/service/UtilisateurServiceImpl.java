@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.simplon.dao.AdresseDao;
-import co.simplon.dao.RoleDao;
 import co.simplon.dao.UtilisateurDao;
 import co.simplon.domain.Utilisateur;
 
@@ -14,12 +12,6 @@ import co.simplon.domain.Utilisateur;
 public class UtilisateurServiceImpl implements UtilisateurService{
 	@Autowired
 	private UtilisateurDao utilisateurDao;
-	
-	@Autowired
-	private RoleDao roleDao;
-	
-	@Autowired
-	private AdresseDao adresseDao;
 
 	@Override
 	public Utilisateur saveUtilisateur(Utilisateur utilisateur) {

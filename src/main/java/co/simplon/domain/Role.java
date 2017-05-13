@@ -26,6 +26,7 @@ public class Role {
 	private String nom;
 	@OneToMany(mappedBy="role", fetch = FetchType.LAZY)
 	private List<Utilisateur> utilisateurs;
+	
 	public String getNom() {
 		return nom;
 	}

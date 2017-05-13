@@ -19,12 +19,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonIdentityInfo(
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
 		  property = "id")
-public class Type_technique {
+public class TypeTechnique {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String type;
-	@OneToMany(mappedBy="type_technique", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="typeTechnique", fetch = FetchType.LAZY)
 	private List<Technique> techniques;
 	
 	public String getType() {

@@ -31,7 +31,7 @@ public class Technique {
 	private String lien;
 	@ManyToOne
 	@JoinColumn(name="type_technique_id")
-	private Type_technique type_technique;
+	private TypeTechnique typeTechnique;
 	@ManyToMany(mappedBy = "techniques", fetch = FetchType.LAZY)
 	List<Ceramiste> ceramistes;
 	@ManyToMany(mappedBy = "techniques", fetch = FetchType.LAZY)

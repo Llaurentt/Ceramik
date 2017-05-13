@@ -37,7 +37,6 @@ public class Stage {
 	@JoinColumn(name="ceramiste_id")
 	private Ceramiste ceramiste;
 	
-	
 	public Integer getNombre_min() {
 		return nombre_min;
 	}

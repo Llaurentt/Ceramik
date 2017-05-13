@@ -29,13 +29,11 @@ public class Photo {
 	private String nom;
 	private String description;
 	@ManyToOne
-	@JoinColumn(name="ceramiste_id")
 	private Ceramiste ceramiste;
 	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(name="technique_photo", joinColumns = {
-//			@JoinColumn(name = "photo_id")},inverseJoinColumns = {@JoinColumn(name ="technique_id")
-//			})
-	@JoinTable(name="technique_photo")
+	@JoinTable(name="technique_photo", joinColumns = {
+			@JoinColumn(name = "photo_id")},inverseJoinColumns = {@JoinColumn(name ="technique_id")
+			})
 	private List<Technique> techniques;
 	@ManyToMany(mappedBy = "photos", fetch = FetchType.LAZY)
 	List<Utilisateur> utilisateurs;

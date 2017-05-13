@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -16,8 +17,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @JsonInclude(Include.NON_NULL)
@@ -40,10 +41,9 @@ public class Ceramiste {
 	@OneToMany(mappedBy="ceramiste", fetch = FetchType.LAZY)
 	private List<Photo> photos;
 	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(name="technique_ceramiste", joinColumns = {
-//			@JoinColumn(name = "ceramiste_id")},inverseJoinColumns = {@JoinColumn(name ="technique_id")
-//			})
-	@JoinTable(name="technique_ceramiste")
+	@JoinTable(name="technique_ceramiste", joinColumns = {
+			@JoinColumn(name = "ceramiste_id")},inverseJoinColumns = {@JoinColumn(name ="technique_id")
+			})
 	private List<Technique> techniques;
 	
 	public String getBio() {

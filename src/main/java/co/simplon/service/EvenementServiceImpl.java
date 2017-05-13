@@ -11,31 +11,36 @@ import co.simplon.domain.Evenement;
 @Service
 public class EvenementServiceImpl implements EvenementService {
 	@Autowired
-	private EvenementDao dao;
+	private EvenementDao evenementDao;
 
 	@Override
 	public Evenement saveEvenement(Evenement evenement) {
-		return dao.save(evenement);
+		return evenementDao.save(evenement);
 	}
-
+	
 	@Override
 	public List<Evenement> listEvenement() {
-		return dao.findAll();
+		return evenementDao.findAll();
 	}
 
 	@Override
 	public Evenement updateEvenement(Evenement evenement) {
-		
-		return dao.save(evenement);
+		return evenementDao.save(evenement);
 	}
 
 	@Override
 	public void deleteEvenement(Long id) {
-		dao.delete(id);
+		evenementDao.delete(id);
 	}
 
 	@Override
-	public Evenement unEvenement(String titre) {
-		return dao.findByTitre(titre);
+	public Evenement getEvenement(String titre) {
+		return evenementDao.findByTitre(titre);
 	}
+
+	@Override
+	public List<Evenement> findByTypeEvenementId(Long typeEvenementId) {
+		return evenementDao.findByTypeEvenementId(typeEvenementId);
+	}
+
 }
