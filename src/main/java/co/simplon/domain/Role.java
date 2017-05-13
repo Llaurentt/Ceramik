@@ -27,17 +27,22 @@ public class Role {
 	@OneToMany(mappedBy="role", fetch = FetchType.LAZY)
 	private List<Utilisateur> utilisateurs;
 	
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public List<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
 }

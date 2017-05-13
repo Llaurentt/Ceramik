@@ -10,12 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @JsonInclude(Include.NON_NULL)
@@ -31,12 +30,17 @@ public class Stage {
 	private Integer nbr_stagiaire;
 	private Date date_limite_inscription;
 	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
+	@JoinColumn(name="evenement_id")
 	private Evenement evenement;
-	@ManyToOne
-	@JoinColumn(name="ceramiste_id")
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private Ceramiste ceramiste;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public Integer getNombre_min() {
 		return nombre_min;
 	}
@@ -49,17 +53,17 @@ public class Stage {
 	public void setNombre_max(Integer nombre_max) {
 		this.nombre_max = nombre_max;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public Integer getNbr_stagiaire() {
 		return nbr_stagiaire;
 	}
 	public void setNbr_stagiaire(Integer nbr_stagiaire) {
 		this.nbr_stagiaire = nbr_stagiaire;
+	}
+	public Date getDate_limite_inscription() {
+		return date_limite_inscription;
+	}
+	public void setDate_limite_inscription(Date date_limite_inscription) {
+		this.date_limite_inscription = date_limite_inscription;
 	}
 	public Evenement getEvenement() {
 		return evenement;
@@ -73,13 +77,4 @@ public class Stage {
 	public void setCeramiste(Ceramiste ceramiste) {
 		this.ceramiste = ceramiste;
 	}
-	public Date getDate_limite_inscription() {
-		return date_limite_inscription;
-	}
-	public void setDate_limite_inscription(Date date_limite_inscription) {
-		this.date_limite_inscription = date_limite_inscription;
-	}
-	
-	
-	
 }

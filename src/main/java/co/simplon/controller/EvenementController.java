@@ -40,9 +40,9 @@ public class EvenementController {
 		service.deleteEvenement(id);
 	}
 	
-	@GetMapping(value="titre")
+	@GetMapping("titre")
 	public Evenement unEvenement(String titre) {
-		return service.unEvenement(titre);
+		return service.getEvenement(titre);
 	}
 
 }

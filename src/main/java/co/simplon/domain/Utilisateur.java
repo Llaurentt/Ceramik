@@ -2,6 +2,7 @@ package co.simplon.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,9 +41,9 @@ public class Utilisateur {
 	private String telephone;
 	private String avatar_utilisateur;
 	private Boolean actif;
-	@ManyToOne
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private Role role;
-	@ManyToOne
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private Adresse adresse;
 	@OneToOne(mappedBy = "utilisateur")
 	private Ceramiste ceramiste;
@@ -54,6 +55,12 @@ public class Utilisateur {
 			})
 	private List<Photo> photos;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -102,23 +109,17 @@ public class Utilisateur {
 	public void setActif(Boolean actif) {
 		this.actif = actif;
 	}
-	public Adresse getAdresse() {
-		return adresse;
-	}
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public Role getRole() {
 		return role;
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
 	}
 	public Ceramiste getCeramiste() {
 		return ceramiste;

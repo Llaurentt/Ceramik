@@ -2,19 +2,19 @@ package co.simplon.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @JsonInclude(Include.NON_NULL)
@@ -29,14 +29,19 @@ public class Technique {
 	private String definition;
 	private String image;
 	private String lien;
-	@ManyToOne
-	@JoinColumn(name="type_technique_id")
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private TypeTechnique typeTechnique;
 	@ManyToMany(mappedBy = "techniques", fetch = FetchType.LAZY)
 	List<Ceramiste> ceramistes;
 	@ManyToMany(mappedBy = "techniques", fetch = FetchType.LAZY)
 	List<Photo> photos;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNom() {
 		return nom;
 	}
@@ -61,7 +66,22 @@ public class Technique {
 	public void setLien(String lien) {
 		this.lien = lien;
 	}
-	
-	
-
+	public TypeTechnique getTypeTechnique() {
+		return typeTechnique;
+	}
+	public void setTypeTechnique(TypeTechnique typeTechnique) {
+		this.typeTechnique = typeTechnique;
+	}
+	public List<Ceramiste> getCeramistes() {
+		return ceramistes;
+	}
+	public void setCeramistes(List<Ceramiste> ceramistes) {
+		this.ceramistes = ceramistes;
+	}
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
 }

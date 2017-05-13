@@ -26,11 +26,23 @@ public class TypeEvenement {
 	private String nom;
 	@OneToMany(mappedBy="typeEvenement", fetch = FetchType.LAZY)
 	private List<Evenement> evenements;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNom() {
 		return nom;
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
+	public List<Evenement> getEvenements() {
+		return evenements;
+	}
+	public void setEvenements(List<Evenement> evenements) {
+		this.evenements = evenements;
+	}
 }

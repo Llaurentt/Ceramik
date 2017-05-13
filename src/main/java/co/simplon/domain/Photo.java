@@ -2,6 +2,7 @@ package co.simplon.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Photo {
 	private Long id;
 	private String nom;
 	private String description;
-	@ManyToOne
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private Ceramiste ceramiste;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="technique_photo", joinColumns = {
@@ -37,7 +38,13 @@ public class Photo {
 	private List<Technique> techniques;
 	@ManyToMany(mappedBy = "photos", fetch = FetchType.LAZY)
 	List<Utilisateur> utilisateurs;
-
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNom() {
 		return nom;
 	}
@@ -50,7 +57,22 @@ public class Photo {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
-
+	public Ceramiste getCeramiste() {
+		return ceramiste;
+	}
+	public void setCeramiste(Ceramiste ceramiste) {
+		this.ceramiste = ceramiste;
+	}
+	public List<Technique> getTechniques() {
+		return techniques;
+	}
+	public void setTechniques(List<Technique> techniques) {
+		this.techniques = techniques;
+	}
+	public List<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
 }

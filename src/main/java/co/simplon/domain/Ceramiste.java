@@ -13,7 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -34,7 +33,7 @@ public class Ceramiste {
 	private String concours;
 	private String site_perso;
 	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
+	@JoinColumn(name="utilisateur_id")
 	private Utilisateur utilisateur;
 	@OneToMany(mappedBy="ceramiste", fetch = FetchType.LAZY)
 	private List<Stage> stages;
@@ -46,6 +45,12 @@ public class Ceramiste {
 			})
 	private List<Technique> techniques;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getBio() {
 		return bio;
 	}
@@ -70,6 +75,28 @@ public class Ceramiste {
 	public void setSite_perso(String site_perso) {
 		this.site_perso = site_perso;
 	}
-	
-	
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	public List<Stage> getStages() {
+		return stages;
+	}
+	public void setStages(List<Stage> stages) {
+		this.stages = stages;
+	}
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
+	public List<Technique> getTechniques() {
+		return techniques;
+	}
+	public void setTechniques(List<Technique> techniques) {
+		this.techniques = techniques;
+	}
 }

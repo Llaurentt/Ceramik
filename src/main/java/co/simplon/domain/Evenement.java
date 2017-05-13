@@ -2,6 +2,7 @@ package co.simplon.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,13 +32,19 @@ public class Evenement {
 	private Date date_debut;
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date_fin;
-	@ManyToOne
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private Adresse adresse;
-	@ManyToOne
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private TypeEvenement typeEvenement;
 	@OneToOne(mappedBy = "evenement")
 	private Stage stage;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getTitre() {
 		return titre;
 	}
@@ -62,5 +69,22 @@ public class Evenement {
 	public void setDate_fin(Date date_fin) {
 		this.date_fin = date_fin;
 	}
-
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	public TypeEvenement getTypeEvenement() {
+		return typeEvenement;
+	}
+	public void setTypeEvenement(TypeEvenement typeEvenement) {
+		this.typeEvenement = typeEvenement;
+	}
+	public Stage getStage() {
+		return stage;
+	}
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
 }

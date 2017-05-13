@@ -30,6 +30,12 @@ public class Adresse {
 	@OneToMany(mappedBy="adresse", fetch = FetchType.LAZY)
 	private List<Utilisateur> utilisateurs;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getAdresse() {
 		return adresse;
 	}
@@ -54,11 +60,10 @@ public class Adresse {
 	public void setPays(String pays) {
 		this.pays = pays;
 	}
-	public Long getId() {
-		return id;
+	public List<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
 	}
-	
 }
