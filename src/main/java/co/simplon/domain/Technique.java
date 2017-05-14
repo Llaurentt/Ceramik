@@ -2,7 +2,6 @@ package co.simplon.domain;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,7 +28,7 @@ public class Technique {
 	private String definition;
 	private String image;
 	private String lien;
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToOne
 	private TypeTechnique typeTechnique;
 	@ManyToMany(mappedBy = "techniques", fetch = FetchType.LAZY)
 	List<Ceramiste> ceramistes;

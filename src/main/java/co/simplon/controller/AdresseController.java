@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,9 +28,11 @@ public class AdresseController {
 	// POST: ajouter / GET: consulter / PUT: mise à jour / DELETE : supprimer
 	// @RequestBody: on indique à Spring qu'on lui envoie les données  
 	// sous format json dans le corps de la requete
-	@RequestMapping(value="/adresses", method=RequestMethod.POST)
+	//@RequestMapping(value="/adresses", method=RequestMethod.POST) -> @PostMapping
 	//@ResponseBody => le resultat va etre généré dans le corps de la réponse en json
 	//mais comme on a spécifié @RestController pas besoin, si c'était @Controller: oui
+	
+	@PostMapping
 	public Adresse saveAdresse(@RequestBody Adresse adresse) {
 		return adresseService.saveAdresse(adresse);
 	}

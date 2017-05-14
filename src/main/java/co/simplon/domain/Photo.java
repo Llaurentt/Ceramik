@@ -2,7 +2,6 @@ package co.simplon.domain;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,8 +14,8 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @JsonInclude(Include.NON_NULL)
@@ -29,7 +28,7 @@ public class Photo {
 	private Long id;
 	private String nom;
 	private String description;
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToOne
 	private Ceramiste ceramiste;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="technique_photo", joinColumns = {

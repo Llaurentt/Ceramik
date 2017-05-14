@@ -2,7 +2,6 @@ package co.simplon.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,9 +25,9 @@ public class Inscription {
 	private Date date_inscription;
 	private Date date_arrivee;
 	private Date date_depart;
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToOne
 	private Utilisateur utilisateur;
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToOne
 	private Evenement evenement;
 	
 	public Long getId() {

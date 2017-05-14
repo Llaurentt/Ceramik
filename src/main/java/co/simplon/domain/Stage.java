@@ -32,7 +32,7 @@ public class Stage {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="evenement_id")
 	private Evenement evenement;
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToOne
 	private Ceramiste ceramiste;
 	
 	public Long getId() {

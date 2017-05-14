@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -41,7 +42,7 @@ public class Utilisateur {
 	private String telephone;
 	private String avatar_utilisateur;
 	private Boolean actif;
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToOne
 	private Role role;
 	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private Adresse adresse;
