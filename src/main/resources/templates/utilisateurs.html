@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- name-space par defaut,thymeleaf est un moteur de template XML, XHTML, HTML5 -> th :préfixe -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Thymeleaf utilise le XHTML, il faut donc bien fermer toutes les balises -->
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}"/> <!-- @{} : recherche dans le contexte du projet -->
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+	th:href="@{/css/style.css}"/>
+
+<title>Liste des utilisateurs</title>
+</head>
+<body>
+	<div class="container spacer">
+		<form th:action="@{index}" method="get">
+			<div class="form-group">
+				<label>Nom (mot clé):</label>
+				<input type="text" name="motCle" th:value="${motCle}"/>
+				<button type="submit">Chercher</button>
+			</div>
+		</form>
+	</div>
+	<div class="container spacer">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th> <th>Prénom</th> <th>Nom</th> <th>Email</th> <th>Role</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- boucle : pour chaque utilisateur (nom donné au model) on le récupère avec expression jstl: ${} -->
+				<!-- pageUtilisateurs bcp d'info dont la liste du contenu de la page: getContent(content) -->
+				<tr th:each="e:${pageUtilisateurs.content}">
+					<td th:text="${e.id}"></td>
+					<td th:text="${e.prenom}"></td>
+					<td th:text="${e.nom}"></td>
+					<td th:text="${e.email}"></td>
+					<td th:text="${e.role.nom}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container">
+		<ul class="nav nav-pills" >
+			<!-- boucle sur chaque page, ternaire ->si page courante: class="active", sinon rien -->
+			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
+				<!-- @{}: on est dans le contexte courant ici: controller utilisateur et on passe paramètre:() -->
+			 	<a th:text="${p}" th:href="@{index(page=${p}, motCle=${motCle})}"></a> 
+			 </li>
+		</ul>
+	</div>
+</body>
+</html>
