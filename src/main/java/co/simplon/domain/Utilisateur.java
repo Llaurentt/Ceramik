@@ -15,19 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 @Entity
-@JsonInclude(Include.NON_NULL)	
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "id")
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -46,7 +36,8 @@ public class Utilisateur {
 	private Role role;
 	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
 	private Adresse adresse;
-	@OneToOne(mappedBy = "utilisateur")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="ceramiste_id")
 	private Ceramiste ceramiste;
 	@OneToMany(mappedBy="utilisateur", fetch = FetchType.LAZY)
 	private List<Inscription> inscriptions;

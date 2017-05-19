@@ -14,16 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 @Entity
-@JsonInclude(Include.NON_NULL)
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "id")
 public class Ceramiste {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,12 +23,11 @@ public class Ceramiste {
 	private String exposition;
 	private String concours;
 	private String site_perso;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="utilisateur_id")
+	@OneToOne(mappedBy = "ceramiste")
 	private Utilisateur utilisateur;
 	@OneToMany(mappedBy="ceramiste", fetch = FetchType.LAZY)
 	private List<Stage> stages;
-	@OneToMany(mappedBy="ceramiste", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="ceramiste", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Photo> photos;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="technique_ceramiste", joinColumns = {
