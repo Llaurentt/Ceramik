@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Stage {
 	@Id
@@ -17,6 +19,7 @@ public class Stage {
 	private Integer nombre_min;
 	private Integer nombre_max;
 	private Integer nbr_stagiaire;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date_limite_inscription;
 	@OneToOne(mappedBy = "stage")
 	private Evenement evenement;

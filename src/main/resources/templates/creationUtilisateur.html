@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Enregistrement Utilisateur</title>
+  <!-- Thymeleaf utilise le XHTML, il faut donc bien fermer toutes les balises -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}"/> <!-- @{} : recherche dans le contexte du projet -->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css"
+	th:href="@{/css/style.css}"/>
+</head>
+<body id="fond">
+
+<div class="container spacer">
+  <div class="row">
+      <div class="container col-sm-6 col-sm-offset-3">
+      <div class="panel panel-default">
+      <div class="panel-heading">Saisie de vos données</div>
+      <div class="panel-body">
+      	  <!-- Thymeleaf pour faire le data-binding th:object="${utilisateur} passé dans le model du controller -->
+		  <form th:action="@{saveUtilisateur}" method="post" th:object="${utilisateur}" enctype="multipart/form-data">
+		    <div class="form-group form-group-sm">
+		      <label class="control-label"> Username :</label>
+		      <!-- *{username} à la place de ${utilisateur.username} - on a factorisé dans form l'object ${utilisateur} -->
+		      <input id="username" type="text" class="form-control" th:field="*{username}" placeholder="Username"/>
+		      <!-- on met les messages d'erreur concernant le champ username dans le span -->
+		      <span class="text-danger" th:errors="*{username}"></span>
+		    </div>
+		    <div class="form-group form-group-sm">
+		      <label class="control-label"> Password :</label>
+		      <input id="password" type="password" class="form-control" th:field="*{password}" placeholder="Password"/>
+		      <span class="text-danger" th:errors="*{password}"></span>
+		    </div>
+		    <div class="form-group form-group-sm">
+		      <label class="control-label"> Nom :</label>
+		      <input id="nom" type="text" class="form-control" th:field="*{nom}" placeholder="Nom"/>
+		      <span class="text-danger" th:errors="*{nom}"></span>
+		    </div>
+		    <div class="form-group form-group-sm">
+		      <label class="control-label"> Prénom :</label>
+		      <input id="prenom" type="text" class="form-control" th:field="*{prenom}" placeholder="Prenom"/>
+		      <span class="text-danger" th:errors="*{prenom}"></span>
+		    </div>
+		    <div class="form-group form-group-sm">
+		      <label class="control-label"> Email :</label>
+		      <input id="email" type="text" class="form-control" th:field="*{email}" placeholder="Email"/>
+		      <span class="text-danger" th:errors="*{email}"></span>
+		    </div>
+		    <div class="form-group form-group-sm">
+		      <label class="control-label"> Téléphone :</label>
+		      <input id="telephone" type="text" class="form-control" th:field="*{telephone}" placeholder="Telephone"/>
+		      <span class="text-danger" th:errors="*{telephone}"></span>
+		    </div>
+		    <div class="form-group form-group-sm">
+		      <label class="control-label"> Avatar :</label>
+		      <!-- Attention ici avatar_utilisateur de type string, or on a Multipartfile, donc ne pas mettre le meme nom !
+		      pour qu'il ne le mette pas dans l'objet utilisateur !!! -->
+		      <input id="avatar" type="file" class="form-control" name="photo" placeholder="Avatar"/>
+		      <span></span>
+		    </div>
+		    <div class="form-group form-group-sm">
+		      <label class="control-label"> Role :</label>
+		      <input id="role" type="number" class="form-control" th:field="*{role.id}" placeholder="Role"/>
+		      <span></span>
+		    </div>
+		    <div>
+		   	 <button type="submit" class="btn btn-primary">Enregistrer</button>
+		    </div>
+		  </form>
+		  </div>
+		  </div>
+      </div>
+    </div>
+ </div>
+</body>
+</html>

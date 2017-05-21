@@ -8,13 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Inscription {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date_inscription;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date_arrivee;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date_depart;
 	@ManyToOne
 	private Utilisateur utilisateur;

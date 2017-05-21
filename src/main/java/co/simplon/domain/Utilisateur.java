@@ -14,7 +14,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -22,12 +24,19 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@NotEmpty(message="Le champ nom de l'utilisateur doit être renseigné")
+	@NotEmpty
+	@Size(min=5, max=30)
 	private String username;
-	@NotEmpty(message="Le champ mot de passe doit être renseigné")
+	@NotEmpty
+	@Size(min=5, max=30)
 	private String password;
+	@NotEmpty
+	@Size(min=2, max=30)
 	private String nom;
+	@NotEmpty
+	@Size(min=2, max=30)
 	private String prenom;
+	@NotEmpty @Email
 	private String email;
 	private String telephone;
 	private String avatar_utilisateur;
