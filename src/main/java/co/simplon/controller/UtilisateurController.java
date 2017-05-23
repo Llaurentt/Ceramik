@@ -1,13 +1,18 @@
 package co.simplon.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import co.simplon.dao.UtilisateurDao;
@@ -70,12 +76,22 @@ public class UtilisateurController {
 		// Ne pas mettre les fichiers dans static: tout le monde y aura accès, le mettre dans un dossier à part, dans une autre BD
 		if (!(file.isEmpty())){ 
 			// getOriginalFilename: permet de retourner le nom original de la photo
+			utilisateur.setAvatar_utilisateur(file.getOriginalFilename());}
+			utilisateurDao.save(utilisateur); // il faut sauvegarder avant de pouvoir récupérer l'id pour le nom de l'upload
+		if (!(file.isEmpty())){ 
 			utilisateur.setAvatar_utilisateur(file.getOriginalFilename());
 			// Ne pas mettre de chemin en dur...si on change de machine....
-			file.transferTo(new File(imagesDir+file.getOriginalFilename()));
+			file.transferTo(new File(imagesDir+utilisateur.getId()));
 		}
 		utilisateurDao.save(utilisateur);
 		return "redirect:afficher";
+	}
+	
+	@GetMapping(value="/getPhoto", produces=MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody  // ce qui est retourné par cette methode est retourné dans le corps de la methode
+	public byte[] getPhoto(Long id) throws Exception{
+		File file = new File(imagesDir+id);
+		return IOUtils.toByteArray(new FileInputStream(file));
 	}
 
 }

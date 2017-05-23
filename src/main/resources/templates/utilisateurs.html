@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout::head">
-<title>Liste des utilisateurs</title>
+<title>Liste Utilisateur</title>
+<meta charset="utf-8"/>
 </head>
 <body >
 Now is : <b th:text="${execInfo.now.time}"></b>
@@ -13,7 +14,7 @@ Now is : <b th:text="${execInfo.now.time}"></b>
 		  	 	<div class="container col-sm-6 col-sm-offset-1">
 					<form th:action="@{afficher}" method="get">
 						<div class="form-group">
-							<label>Nom (mot clé):</label>
+							<label>Nom (mot clÃ©):</label>
 							<input type="text" name="motCle" th:value="${motCle}"/>
 							<button type="submit">Chercher</button>
 						</div>
@@ -25,18 +26,20 @@ Now is : <b th:text="${execInfo.now.time}"></b>
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>ID</th> <th>Prénom</th> <th>Nom</th> <th>Email</th> <th>Avatar</th> <th>Role</th>
+					<th>ID</th> <th>PrÃ©nom</th> <th>Nom</th> <th>Email</th> <th>Avatar</th> <th>Role</th>
 				</tr>
 			</thead>
 			<tbody>
-				<!-- boucle : pour chaque utilisateur (nom donné au model) on le récupère avec expression jstl: ${} -->
+				<!-- boucle : pour chaque utilisateur (nom donnÃ© au model) on le rÃ©cupÃ¨re avec expression jstl: ${} -->
 				<!-- pageUtilisateurs bcp d'info dont la liste du contenu de la page: getContent(content) -->
 				<tr th:each="e:${pageUtilisateurs.content}">
 					<td th:text="${e.id}"></td>
 					<td th:text="${e.prenom}"></td>
 					<td th:text="${e.nom}"></td>
 					<td th:text="${e.email}"></td>
-					<td th:text="${e.avatar_utilisateur}"></td>
+					<td>
+						<img th:src="@{getPhoto(id=${e.id})}" width="100" height="100"/>
+					</td>
 					<td th:text="${e.role.nom}"></td>
 				</tr>
 			</tbody>
@@ -46,7 +49,7 @@ Now is : <b th:text="${execInfo.now.time}"></b>
 		<ul class="nav nav-pills" >
 			<!-- boucle sur chaque page, ternaire ->si page courante: class="active", sinon rien -->
 			<li th:each="p:${pages}" th:class="${p==pageCourante}?active:''">
-				<!-- @{}: on est dans le contexte courant ici: controller utilisateur et on passe paramètre:() -->
+				<!-- @{}: on est dans le contexte courant ici: controller utilisateur et on passe paramÃ¨tre:() -->
 			 	<a th:text="${p}" th:href="@{afficher(page=${p}, motCle=${motCle})}"></a> 
 			 </li>
 		</ul>
